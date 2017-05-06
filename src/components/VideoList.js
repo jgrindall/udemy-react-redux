@@ -6,9 +6,13 @@ class VideoList extends React.Component{
         super(props);
     }
     render(){
-        console.log(this.props);
+        var onSelect = this.props.onSelect;
         var items = this.props.videos.map(function(video, i){
-            return <VideoListItem video = {video} key={video.etag}/>;
+            return <VideoListItem
+                onSelect={onSelect}
+                video={video}
+                key={video.etag}
+            />;
         });
         return <ul className="col-md-4 list-group">
             {items}

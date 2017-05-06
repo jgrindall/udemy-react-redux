@@ -18,12 +18,15 @@ class App extends React.Component{
             _this.setState({"videos":videos, "selectedVideo":videos[0]});
         });
     }
+    onSelect(video){
+        this.setState({"selectedVideo":video});
+    }
     render(){
         return <div>
             <div>Hi</div>
             <SearchBar/>
             <VideoDetail video = {this.state.selectedVideo}/>
-            <VideoList videos = {this.state.videos}/>
+            <VideoList onSelect={this.onSelect.bind(this)} videos = {this.state.videos}/>
         </div>;
     }
 }

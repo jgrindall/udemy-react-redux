@@ -4,8 +4,11 @@ class VideoListItem extends React.Component{
     constructor(props){
         super(props);
     }
+    onClick(){
+        this.props.onSelect(this.props.video);
+    }
     render(){
-        return <li>
+        return <li onClick={this.onClick.bind(this)}>
             <div className="video-list media">
                 <div className="media-left">
                     <img className="media-object" src={this.props.video.snippet.thumbnails.default.url}/>
