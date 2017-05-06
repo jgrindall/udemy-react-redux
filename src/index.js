@@ -8,21 +8,21 @@ import VideoList from './components/VideoList';
 class App extends React.Component{
     constructor(props){
         super(props);
-        this.state = {"videos": []};
+        this.state = {"videos": [], "selectedVideo":null};
         this.load();
     }
     load(){
         var _this = this;
         YTSearch({"key":YOUTUBE_API_KEY, "term":"cats"}, function(videos){
             console.log("now", videos);
-            _this.setState({"videos":videos});
+            _this.setState({"videos":videos, "selectedVideo":videos[0]});
         });
     }
     render(){
         return <div>
             <div>Hi</div>
             <SearchBar/>
-            <VideoDetail video = {this.state.videos[0]}/>
+            <VideoDetail video = {this.state.selectedVideo}/>
             <VideoList videos = {this.state.videos}/>
         </div>;
     }
